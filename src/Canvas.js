@@ -2,18 +2,20 @@ import React, { useRef, useState, useEffect} from 'react';
 
 const Canvas = () => {
     const [isDrawing, setIsDrawing] = useState(false)
+    const [positions, setPositions] = useState({})
     const canvasRef = useRef(null)
     const contextRef = useRef(null)
     useEffect(() => {
         const canvas  = canvasRef.current 
         const ctx = canvas.getContext('2d')
         contextRef.current = ctx
+        setPositions({x: 20, y:20})
+        //no llegue uwu
+        ctx.fillRect(20, 20, 50, 50)
 
     }, [])
     const onMouseDown = ({ nativeEvent }) =>{
         const { offsetX, offsetY } = nativeEvent
-        contextRef.current.beginPath()
-        contextRef.current.moveTo(offsetX, offsetY)
         setIsDrawing(true)
     }
     const onMouseUp = () =>{
@@ -23,10 +25,19 @@ const Canvas = () => {
     const onMouseMove = ({ nativeEvent }) =>{
         if(!isDrawing) return
         const { offsetX, offsetY } = nativeEvent
-        contextRef.current.lineTo(offsetX, offsetY)
-        contextRef.current.stroke()
+        setPositions({x: offsetX, y: offsetY})
+        if(positions){
+            const { x, y } = positions
+            
+            /* const posx = x + 50
+            const posy = y + 50
+            if( (offsetX < posx && offsetX > x) && (offsetY < posy && offsetY > y) ){
+                console.log('estoy dentro xd')
+            }     */
+            contextRef.current.clearRect(x, y, 50, 50)
+        }
+        contextRef.current.fillRect(offsetX, offsetY, 50, 50)
     }
-    console.log('me renderize xd') 
     return (
         <>
             <canvas  className="canvas" 
@@ -34,6 +45,8 @@ const Canvas = () => {
                     onMouseDown = {onMouseDown}
                     onMouseMove = {onMouseMove}
                     onMouseUp = {onMouseUp}
+                    width="600"
+                    heigth ="300" 
                     />
             <button
                 
@@ -41,5 +54,4 @@ const Canvas = () => {
         </>
     )
 }
- 
 export default Canvas;
