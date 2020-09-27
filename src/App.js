@@ -1,12 +1,13 @@
 import React from 'react';
 import './style.css'
-import Canvas from './Canvas'
+import Sidebar from './Layout/Sidebar'
+import Main from './Layout/Main'
 const  App = ()=> {
   return (
-    <main >
-      <h1 className="text">Canvas</h1>      
-      <Canvas/>
-    </main>
+  <div className="container" >
+    <Sidebar />
+    <Main />
+  </div>
   );
 }
 export default App;

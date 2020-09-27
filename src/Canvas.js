@@ -28,12 +28,6 @@ const Canvas = () => {
         setPositions({x: offsetX, y: offsetY})
         if(positions){
             const { x, y } = positions
-            
-            /* const posx = x + 50
-            const posy = y + 50
-            if( (offsetX < posx && offsetX > x) && (offsetY < posy && offsetY > y) ){
-                console.log('estoy dentro xd')
-            }     */
             contextRef.current.clearRect(x, y, 50, 50)
         }
         contextRef.current.fillRect(offsetX, offsetY, 50, 50)
