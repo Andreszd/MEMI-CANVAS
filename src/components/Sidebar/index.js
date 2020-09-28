@@ -1,11 +1,9 @@
 import { faShower } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
-import './Sidebar.css'
-const Sidebar = ({ setOpened, isOpened }) => {
+import './style.css'
+const Sidebar = ({ setShow }) => {
     const handlerButton = (e)=> {
-        isOpened ? setOpened(false) : setOpened(true)
-
-
+        setShow(true)
     }
     return ( 
         <div className="sidebar">
