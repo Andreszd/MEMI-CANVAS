@@ -1,21 +1,16 @@
-import React from 'react';
+import React from 'react'
 import { CSSTransition } from 'react-transition-group'
+
 import './style.css'
+
 const Modal = ({ content }) => {
-    return ( 
+    return (
         <div className="container-modal">
-            <CSSTransition
-                appear
-                in
-                classNames="modal-transition"
-                timeout={300}
-            >
-                <div className="modal">
-                    {content}
-                </div>
+            <CSSTransition appear in classNames="modal-transition" timeout={300}>
+                <div className="modal">{content}</div>
             </CSSTransition>
-        </div>        
+        </div>
     )
 }
- 
-export default Modal;
+
+export default Modal

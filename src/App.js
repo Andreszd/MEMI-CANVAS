@@ -1,11 +1,11 @@
-import React from 'react';
-import './style.css'
+import React from 'react'
 
 import Home from './views/Home'
-const  App = ()=> {
-  
-  return (
-    <Home />
-  );
+
+import './style.css'
+
+const App = () => {
+    return <Home />
 }
-export default App;
+
+export default App
