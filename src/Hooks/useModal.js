@@ -1,31 +1,30 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom'
 import Modal from '../components/Modal'
-const useModal = (state) => {
-    const [modal, setModal] = useState({
-        content:null,
-        show:state
-    })
-    const { content, show } = modal
-    const setContentModal = (content)=> {
-        setModal({
-            ...modal,
-            content: <Modal content={content}/>
-        })       
+const useModal = (state = false) => {
+    
+    const [isVisible, setIsVisible] = useState(state)
+    
+    const hiddenModal = () => setIsVisible(false)
+    const showModal = () => setIsVisible(true)
+    const RenderModal = ({ children })=> {
+        return(
+            isVisible ? 
+            ReactDOM.createPortal(
+                <Modal 
+                    content={children}
+                />
+            ,document.querySelector('#PopUp'))
+            :null
+        )    
     }
-    const setShow = (view = false)=>{
-        setModal({
-            ...modal,
-            show: view
-        })
-    }
-    const getContent = () => modal.content
     
     return [
-        show,
-        getContent,
-        setContentModal,
-        setShow
+        showModal,
+        hiddenModal,
+        RenderModal
     ]
 }
+
  
 export default useModal;

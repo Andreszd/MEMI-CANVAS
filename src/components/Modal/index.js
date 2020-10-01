@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { CSSTransition } from 'react-transition-group'
 import './style.css'
 const Modal = ({ content }) => {
@@ -17,5 +18,4 @@ const Modal = ({ content }) => {
         </div>        
     )
 }
- 
-export default Modal;
+export default Modal
